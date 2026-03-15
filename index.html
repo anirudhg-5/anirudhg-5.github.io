@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Anirudh G — Talent Development & L&D Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --dark: #0F0F0F;
+    --dark2: #1A1A1A;
+    --dark3: #242424;
+    --cream: #F5F0E8;
+    --cream2: #EDE7D8;
+    --text: #2C2C2C;
+    --muted: #888;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(15,15,15,0.95);
+    backdrop-filter: blur(10px);
+    padding: 18px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1.3rem; font-weight: 700; letter-spacing: 1px;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 0 60px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(201,168,76,0.05) 0%, transparent 50%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: linear-gradient(rgba(201,168,76,0.5) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(201,168,76,0.5) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 700px; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold); font-size: 0.75rem;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 2px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    color: #fff; line-height: 1.05;
+    font-weight: 900; margin-bottom: 8px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero h1 span { color: var(--gold); font-style: italic; }
+  .hero-sub {
+    color: rgba(255,255,255,0.5);
+    font-size: 1rem; letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-desc {
+    color: rgba(255,255,255,0.65);
+    font-size: 1.05rem; line-height: 1.8; max-width: 520px;
+    margin-bottom: 40px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .hero-btns {
+    display: flex; gap: 16px;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--dark);
+    padding: 14px 32px; font-weight: 500;
+    font-size: 0.9rem; letter-spacing: 1px;
+    text-decoration: none; border-radius: 2px;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-secondary {
+    border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8);
+    padding: 14px 32px; font-size: 0.9rem; letter-spacing: 1px;
+    text-decoration: none; border-radius: 2px;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-stats {
+    position: absolute; right: 60px; bottom: 80px; z-index: 2;
+    display: flex; flex-direction: column; gap: 32px;
+    animation: fadeUp 0.8s 0.5s ease both;
+  }
+  .stat { text-align: right; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; color: var(--gold); font-weight: 700; line-height: 1;
+  }
+  .stat-label { color: rgba(255,255,255,0.4); font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* SECTIONS */
+  section { padding: 100px 60px; }
+
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 12px; display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800; line-height: 1.15; margin-bottom: 20px;
+  }
+  .section-divider {
+    width: 60px; height: 3px;
+    background: var(--gold); margin-bottom: 50px;
+  }
+
+  /* ABOUT */
+  #about { background: var(--cream); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; max-width: 1100px;
+  }
+  .about-text p {
+    color: #555; line-height: 1.9; font-size: 1.02rem; margin-bottom: 20px;
+  }
+  .about-info { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
+  .info-row { display: flex; gap: 16px; align-items: flex-start; }
+  .info-icon { color: var(--gold); font-size: 1.1rem; margin-top: 2px; }
+  .info-label { font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+  .info-val { font-size: 0.95rem; color: var(--text); font-weight: 500; }
+
+  .about-right { display: flex; flex-direction: column; gap: 24px; }
+  .about-card {
+    background: #fff;
+    border-left: 4px solid var(--gold);
+    padding: 24px 28px;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+  .about-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; margin-bottom: 8px; color: var(--dark);
+  }
+  .about-card p { color: #666; font-size: 0.92rem; line-height: 1.7; }
+
+  /* EXPERIENCE */
+  #experience { background: var(--dark); }
+  #experience .section-title { color: #fff; }
+  #experience .section-label { color: var(--gold); }
+  .exp-container { max-width: 900px; }
+  .exp-company {
+    display: flex; align-items: center; gap: 20px; margin-bottom: 40px;
+  }
+  .exp-logo {
+    width: 56px; height: 56px; border-radius: 8px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; color: var(--gold); font-weight: 700;
+  }
+  .exp-company-info h3 {
+    font-family: 'Playfair Display', serif;
+    color: #fff; font-size: 1.4rem;
+  }
+  .exp-company-info span { color: rgba(255,255,255,0.4); font-size: 0.85rem; }
+  .exp-role {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px; padding: 32px 36px; margin-bottom: 20px;
+  }
+  .exp-role-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold); font-size: 1.2rem; margin-bottom: 4px;
+  }
+  .exp-role-date { color: rgba(255,255,255,0.35); font-size: 0.82rem; letter-spacing: 1px; margin-bottom: 20px; }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .exp-bullets li {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.93rem; line-height: 1.7;
+    padding-left: 20px; position: relative;
+  }
+  .exp-bullets li::before {
+    content: '▪'; color: var(--gold);
+    position: absolute; left: 0; top: 0;
+  }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .exp-tag {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--gold-light); font-size: 0.75rem;
+    padding: 4px 12px; border-radius: 20px; letter-spacing: 0.5px;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--cream2); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; }
+  .skill-cat {
+    background: #fff; border-radius: 10px;
+    padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+  .skill-cat-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; color: var(--dark); margin-bottom: 4px;
+  }
+  .skill-cat-line { width: 32px; height: 2px; background: var(--gold); margin-bottom: 18px; }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-pill {
+    background: var(--cream); color: var(--text);
+    font-size: 0.78rem; padding: 5px 12px;
+    border-radius: 20px; border: 1px solid rgba(0,0,0,0.08);
+  }
+
+  /* ACHIEVEMENTS */
+  #achievements { background: #fff; }
+  .ach-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 900px; }
+  .ach-card {
+    background: var(--cream);
+    border-radius: 10px; padding: 32px;
+    border-top: 4px solid var(--gold);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .ach-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+  .ach-icon { font-size: 2rem; margin-bottom: 14px; }
+  .ach-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; color: var(--dark); margin-bottom: 8px;
+  }
+  .ach-card p { color: #666; font-size: 0.9rem; line-height: 1.7; }
+
+  /* PERSONAL */
+  #personal { background: var(--dark); }
+  #personal .section-title { color: #fff; }
+  .personal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; }
+  .personal-card {
+    border-radius: 12px; overflow: hidden;
+    position: relative; min-height: 280px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 28px;
+    cursor: default;
+    transition: transform 0.3s;
+  }
+  .personal-card:hover { transform: scale(1.02); }
+  .personal-card.cricket {
+    background: linear-gradient(160deg, #1a3a1a 0%, #0d2b0d 100%);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .personal-card.travel {
+    background: linear-gradient(160deg, #1a2a3a 0%, #0d1a2b 100%);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .personal-card.fitness {
+    background: linear-gradient(160deg, #3a1a1a 0%, #2b0d0d 100%);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .personal-emoji {
+    font-size: 3.5rem; margin-bottom: 16px; display: block;
+  }
+  .personal-card h3 {
+    font-family: 'Playfair Display', serif;
+    color: #fff; font-size: 1.3rem; margin-bottom: 8px;
+  }
+  .personal-card p { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.6; }
+  .personal-badge {
+    display: inline-block; margin-top: 14px;
+    background: rgba(201,168,76,0.2); border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold); font-size: 0.72rem; letter-spacing: 1px;
+    padding: 4px 12px; border-radius: 20px; text-transform: uppercase;
+  }
+
+  /* EDUCATION & CERTS */
+  #education { background: var(--cream); }
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1000px; }
+  .edu-item {
+    border-left: 3px solid var(--gold);
+    padding-left: 24px; margin-bottom: 32px;
+  }
+  .edu-year { color: var(--gold); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+  .edu-degree { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--dark); margin: 4px 0; }
+  .edu-school { color: var(--muted); font-size: 0.9rem; }
+  .cert-item {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.07);
+  }
+  .cert-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold); margin-top: 7px; flex-shrink: 0;
+  }
+  .cert-name { font-size: 0.93rem; color: var(--text); font-weight: 500; }
+
+  /* CONTACT */
+  #contact { background: var(--dark2); }
+  #contact .section-title { color: #fff; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 900px; align-items: start; }
+  .contact-text p { color: rgba(255,255,255,0.55); line-height: 1.8; font-size: 1rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 14px;
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    font-size: 0.95rem; transition: color 0.3s;
+  }
+  .contact-link:hover { color: var(--gold); }
+  .contact-link-icon {
+    width: 40px; height: 40px; border-radius: 8px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 28px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  footer p { color: rgba(255,255,255,0.3); font-size: 0.82rem; }
+  footer span { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 70px 24px; }
+    .hero { padding: 0 24px; }
+    .hero-stats { display: none; }
+    .about-grid, .contact-grid, .edu-grid { grid-template-columns: 1fr; gap: 40px; }
+    .skills-grid, .personal-grid { grid-template-columns: 1fr; }
+    .ach-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">AG</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#personal">Personal</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Coimbatore, Tamil Nadu</div>
+    <h1>Anirudh <span>G</span></h1>
+    <p class="hero-sub">Talent Development & L&D Specialist</p>
+    <p class="hero-desc">
+      Driving large-scale learning programs, leadership connects, and workforce development across enterprise environments. 4.5+ years at Cognizant building programs that actually move the needle.
+    </p>
+    <div class="hero-btns">
+      <a href="#experience" class="btn-primary">View Experience</a>
+      <a href="#contact" class="btn-secondary">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">10K+</div>
+      <div class="stat-label">New Hires Onboarded</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">25%</div>
+      <div class="stat-label">Attrition Reduced</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4.5+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <span class="section-label">Who I Am</span>
+    <h2 class="section-title">A little about me</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>
+        I'm Anirudh — a Talent Development and L&D Specialist based in Coimbatore, Tamil Nadu. I've spent the last 4.5+ years at Cognizant building and managing large-scale learning programs that help thousands of new hires transition from campus to corporate life.
+      </p>
+      <p>
+        My work sits at the intersection of people, programs, and purpose. I love building systems that work — whether it's an onboarding program for 10,000 hires, a leadership connect that earns a standing ovation from the SVP, or a reporting dashboard that cuts hours of manual work.
+      </p>
+      <p>
+        Outside of work, you'll find me on a cricket pitch, at the gym, or planning my next trip somewhere new.
+      </p>
+      <div class="about-info">
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">Location</div>
+            <div class="info-val">Coimbatore, Tamil Nadu</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">✉️</div>
+          <div>
+            <div class="info-label">Email</div>
+            <div class="info-val">anirudh.5@outlook.com</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🔗</div>
+          <div>
+            <div class="info-label">LinkedIn</div>
+            <div class="info-val">linkedin.com/in/anirudh5</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="about-card">
+        <h4>Program Management</h4>
+        <p>End-to-end ownership of L&D programs — from budgeting and vendor management to stakeholder reporting and governance.</p>
+      </div>
+      <div class="about-card">
+        <h4>Training & Onboarding</h4>
+        <p>Designed and delivered onboarding journeys and behavioural training programs that have touched 10,000+ employees.</p>
+      </div>
+      <div class="about-card">
+        <h4>Leadership Engagement</h4>
+        <p>Facilitated high-impact leadership connects and client visits, representing L&D at SVP and CXO level forums.</p>
+      </div>
+      <div class="about-card">
+        <h4>Data & Reporting</h4>
+        <p>Built Power BI dashboards and learning scorecards that give leadership real-time visibility into program outcomes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="reveal">
+    <span class="section-label">Career</span>
+    <h2 class="section-title" style="color:#fff">Work Experience</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="exp-container reveal">
+    <div class="exp-company">
+      <div class="exp-logo">C</div>
+      <div class="exp-company-info">
+        <h3>Cognizant</h3>
+        <span>May 2021 – Present · 4.5+ Years</span>
+      </div>
+    </div>
+    <div class="exp-role">
+      <div class="exp-role-title">Talent Development and L&D Specialist</div>
+      <div class="exp-role-date">MAY 2021 – PRESENT</div>
+      <ul class="exp-bullets">
+        <li>Led end-to-end planning, execution, and governance of L&D programs supporting 10,000+ annual entry-level hires, ensuring seamless program delivery and workforce readiness.</li>
+        <li>Managed onboarding programs, overseeing scheduling, logistics, and stakeholder coordination for smooth new hire transitions.</li>
+        <li>Facilitated behavioural training programs covering professional effectiveness, workplace communication, growth mindset, and cultural integration.</li>
+        <li>Headed and facilitated high-impact leadership connects and client visits, representing the L&D function at SVP and CXO level forums.</li>
+        <li>Reduced early-tenure attrition by 25% through Lean 3 Sigma initiatives, root-cause analysis, and targeted learning interventions.</li>
+        <li>Built Power BI and Advanced Excel dashboards providing leadership real-time visibility into KPIs, training ROI, and learner performance.</li>
+        <li>Spearheaded program budgeting, vendor coordination, resource planning, risk management, and business continuity planning.</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="exp-tag">L&D Program Management</span>
+        <span class="exp-tag">Onboarding</span>
+        <span class="exp-tag">Stakeholder Management</span>
+        <span class="exp-tag">Power BI</span>
+        <span class="exp-tag">Lean 3 Sigma</span>
+        <span class="exp-tag">Training Delivery</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal">
+    <span class="section-label">Capabilities</span>
+    <h2 class="section-title">Skills & Tools</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="skills-grid reveal">
+    <div class="skill-cat">
+      <div class="skill-cat-title">L&D & Program Management</div>
+      <div class="skill-cat-line"></div>
+      <div class="skill-pills">
+        <span class="skill-pill">L&D Program Management</span>
+        <span class="skill-pill">Training Delivery</span>
+        <span class="skill-pill">Onboarding</span>
+        <span class="skill-pill">Learning Strategy</span>
+        <span class="skill-pill">Needs Analysis</span>
+        <span class="skill-pill">Behavioural Training</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-title">Stakeholder & Governance</div>
+      <div class="skill-cat-line"></div>
+      <div class="skill-pills">
+        <span class="skill-pill">Stakeholder Management</span>
+        <span class="skill-pill">Program Governance</span>
+        <span class="skill-pill">Executive Engagement</span>
+        <span class="skill-pill">Vendor Management</span>
+        <span class="skill-pill">Budget Management</span>
+        <span class="skill-pill">Risk Planning</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-title">Analytics & Tools</div>
+      <div class="skill-cat-line"></div>
+      <div class="skill-pills">
+        <span class="skill-pill">Power BI</span>
+        <span class="skill-pill">Advanced Excel</span>
+        <span class="skill-pill">LMS Platforms</span>
+        <span class="skill-pill">Kahoot</span>
+        <span class="skill-pill">Learning Scorecards</span>
+        <span class="skill-pill">MIS Reporting</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="reveal">
+    <span class="section-label">Impact</span>
+    <h2 class="section-title">Key Achievements</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="ach-grid reveal">
+    <div class="ach-card">
+      <div class="ach-icon">📉</div>
+      <h4>25% Attrition Reduction</h4>
+      <p>Reduced early-tenure attrition by 25% through data-driven Lean 3 Sigma initiatives, root-cause analysis, and targeted learning interventions.</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">🎓</div>
+      <h4>10,000+ Hires Onboarded</h4>
+      <p>Scaled onboarding programs to 10,000+ annual new hires with measurable improvements in workforce readiness and new hire satisfaction.</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">🏆</div>
+      <h4>Guinness World Record</h4>
+      <p>Contributed to Cognizant's Guinness World Record 'Vibe Coding' initiative through high-volume program coordination and execution.</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">⭐</div>
+      <h4>CXO Recognition</h4>
+      <p>Recognised by SVP and CXO stakeholders for excellence in strategic program facilitation and learning program impact across the organisation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAL -->
+<section id="personal">
+  <div class="reveal">
+    <span class="section-label">Beyond Work</span>
+    <h2 class="section-title" style="color:#fff">Life Outside the Office</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="personal-grid reveal">
+    <div class="personal-card cricket">
+      <span class="personal-emoji">🏏</span>
+      <h3>Cricket</h3>
+      <p>Playing competitive cricket for over 10 years and proud to represent Cognizant on the field. Cricket has taught me teamwork, patience, and how to perform under pressure — lessons that show up in work too.</p>
+      <span class="personal-badge">10+ Years · Cognizant Team</span>
+    </div>
+    <div class="personal-card travel">
+      <span class="personal-emoji">✈️</span>
+      <h3>Travel</h3>
+      <p>Every new place is a new perspective. I love exploring different cultures, cuisines, and landscapes — travel keeps me curious and grounded at the same time.</p>
+      <span class="personal-badge">Explorer</span>
+    </div>
+    <div class="personal-card fitness">
+      <span class="personal-emoji">💪</span>
+      <h3>Fitness</h3>
+      <p>Daily gym sessions are non-negotiable for me. Fitness isn't just about physical strength — it builds the discipline and mental clarity that carries into everything I do.</p>
+      <span class="personal-badge">Daily Grind</span>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="reveal">
+    <span class="section-label">Qualifications</span>
+    <h2 class="section-title">Education & Certifications</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="edu-grid reveal">
+    <div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:28px;color:var(--dark)">Education</h3>
+      <div class="edu-item">
+        <div class="edu-year">2019 – 2021</div>
+        <div class="edu-degree">MBA – Human Resources & Finance</div>
+        <div class="edu-school">PSG Institute of Management, Coimbatore</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">2014 – 2018</div>
+        <div class="edu-degree">B.E – Automobile Engineering</div>
+        <div class="edu-school">PSG College of Technology, Coimbatore</div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:28px;color:var(--dark)">Certifications</h3>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <div class="cert-name">Business Artificial Intelligence – Masterclass</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <div class="cert-name">Generative AI for Business Managers</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <div class="cert-name">Cognizant Certified Professional Development Trainer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <span class="section-label">Let's Connect</span>
+    <h2 class="section-title" style="color:#fff">Get In Touch</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="contact-grid reveal">
+    <div class="contact-text">
+      <p>Whether it's a new opportunity, a collaboration, or just a conversation about L&D — I'd love to hear from you. Feel free to reach out through any of the channels below.</p>
+      <p style="margin-top:16px">Currently based in Coimbatore, Tamil Nadu, and open to opportunities across India.</p>
+    </div>
+    <div>
+      <div class="contact-links">
+        <a href="mailto:anirudh.5@outlook.com" class="contact-link">
+          <div class="contact-link-icon">✉️</div>
+          anirudh.5@outlook.com
+        </a>
+        <a href="tel:+918056312082" class="contact-link">
+          <div class="contact-link-icon">📞</div>
+          80563 12082
+        </a>
+        <a href="https://linkedin.com/in/anirudh5" target="_blank" class="contact-link">
+          <div class="contact-link-icon">🔗</div>
+          linkedin.com/in/anirudh5
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Anirudh G</span>. All rights reserved.</p>
+  <p>Talent Development & L&D Specialist · Coimbatore</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>
